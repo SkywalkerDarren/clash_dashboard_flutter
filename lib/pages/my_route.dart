@@ -1,4 +1,5 @@
 import 'package:clash_dashboard_flutter/pages/home/home_page.dart';
+import 'package:clash_dashboard_flutter/pages/login/login_page.dart';
 import 'package:flutter/material.dart';
 
 final GlobalKey<NavigatorState> key = GlobalKey<NavigatorState>();
@@ -12,7 +13,7 @@ class MyRouterDelegate extends RouterDelegate<List<RouteSettings>>
   }
   
   final _pages = <Page>[
-    const HomePage()
+    LoginPage()
   ];
 
   @override
