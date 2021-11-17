@@ -14,18 +14,34 @@ class ProxyResp {
   Map<String, dynamic> toJson() => _$ProxyRespToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class ProxyItemResp {
-  final List<String>? all;
+  final List<HistoryItemResp> history;
+  final String name;
   final String? now;
+  final List<String>? all;
   final String type;
+  final bool udp;
 
-  ProxyItemResp(this.all, this.now, this.type);
+  ProxyItemResp(this.all, this.now, this.type, this.history, this.name, this.udp);
 
   factory ProxyItemResp.fromJson(Map<String, dynamic> json) =>
       _$ProxyItemRespFromJson(json);
 
   Map<String, dynamic> toJson() => _$ProxyItemRespToJson(this);
+}
+
+@JsonSerializable()
+class HistoryItemResp {
+  final String time;
+  final int delay;
+
+  HistoryItemResp(this.time, this.delay);
+
+  factory HistoryItemResp.fromJson(Map<String, dynamic> json) =>
+      _$HistoryItemRespFromJson(json);
+
+  Map<String, dynamic> toJson() => _$HistoryItemRespToJson(this);
 }
 
 @JsonSerializable()

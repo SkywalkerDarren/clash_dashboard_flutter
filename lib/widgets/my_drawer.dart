@@ -23,10 +23,11 @@ class MyDrawer extends StatelessWidget {
             ),
             decoration: BoxDecoration(color: Theme.of(context).primaryColor),
           ),
-          ListTile(title: Text("home"), onTap: () => Navigator.pop(context)),
           ListTile(title: Text("proxies"), onTap: () => Navigator.pop(context)),
-          ListTile(title: Text("settings"), onTap: () => Navigator.pop(context)),
+          ListTile(title: Text("rules"), onTap: () => Navigator.pop(context)),
+          ListTile(title: Text("connections"), onTap: () => Navigator.pop(context)),
           ListTile(title: Text("logs"), onTap: () => Navigator.pop(context)),
+          ListTile(title: Text("settings"), onTap: () => Navigator.pop(context)),
         ],
       ),
     );

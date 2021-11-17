@@ -1,12 +1,13 @@
 import 'dart:convert';
 
 import 'package:clash_dashboard_flutter/repository/client.dart';
-import 'package:clash_dashboard_flutter/repository/logs_req.dart';
-import 'package:clash_dashboard_flutter/repository/traffic_req.dart';
 import 'package:clash_dashboard_flutter/repository/configs_req.dart';
+import 'package:clash_dashboard_flutter/repository/connections_req.dart';
+import 'package:clash_dashboard_flutter/repository/logs_req.dart';
 import 'package:clash_dashboard_flutter/repository/proxy_req.dart';
-import 'package:clash_dashboard_flutter/repository/version_req.dart';
 import 'package:clash_dashboard_flutter/repository/rules_req.dart';
+import 'package:clash_dashboard_flutter/repository/traffic_req.dart';
+import 'package:clash_dashboard_flutter/repository/version_req.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -38,7 +39,7 @@ abstract class BaseClashApis {
   Future putConfigs();
 
   @PATCH('/configs')
-  Future patchConfigs(@Body() ConfigsReqResp req);
+  Future updateConfigs(@Body() ConfigsReqResp req);
 
   @GET('/rules')
   Future<RulesResp> getRules();
@@ -50,7 +51,32 @@ abstract class BaseClashApis {
   Future<ProxyItemResp> getProxy(@Path('proxy') String proxyName);
 
   @GET('/proxies/{proxy}/delay')
-  Future<ProxyDelayResp> getProxyDelay(@Path('proxy') String proxyName);
+  Future<ProxyDelayResp> getProxyDelay(
+    @Path('proxy') String proxyName,
+    @Query('timeout') int timeout,
+    @Query('url') String url,
+  );
+
+  @GET('/connections')
+  Future<ConnectionsResp> getConnections();
+
+  @DELETE('/connections')
+  Future deleteConnections();
+
+  @DELETE('/connections/{id}')
+  Future deleteConnection(@Path('id') String id);
+
+  @GET('/providers/proxies')
+  Future getProviders();
+
+  @GET('/providers/proxies/{name}')
+  Future getProvider(@Path('name') String name);
+
+  @PUT('/providers/proxies/{name}')
+  Future selectProvider(@Path('name') String name);
+
+  @GET('/providers/proxies/{name}/healthcheck')
+  Future checkProvider(@Path('name') String name);
 }
 
 mixin ClashApisMixin on BaseClashApis {
