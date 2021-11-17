@@ -14,7 +14,10 @@ class MyRouterDelegate extends RouterDelegate<List<RouteSettings>>
     return _instance ??= MyRouterDelegate._();
   }
 
-  final _pages = <Page>[LoginPage()];
+  final _pages = <Page>[
+    HomePage(),
+    // LoginPage(), // todo 暂时屏蔽
+  ];
 
   @override
   Widget build(BuildContext context) {

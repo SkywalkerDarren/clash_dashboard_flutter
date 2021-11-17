@@ -1,3 +1,4 @@
+import 'package:clash_dashboard_flutter/blocs/page/page_cubit.dart';
 import 'package:clash_dashboard_flutter/blocs/traffic/traffic_cubit.dart';
 import 'package:clash_dashboard_flutter/blocs/version/version_cubit.dart';
 import 'package:clash_dashboard_flutter/pages/home/home_screen.dart';
@@ -13,6 +14,7 @@ class HomePage extends MaterialPage {
           name: sName,
           child: MultiBlocProvider(
             providers: [
+              BlocProvider(create: (_) => PageCubit()),
               BlocProvider(create: (_) => VersionCubit(api: ClashApis())),
               BlocProvider(create: (_) => TrafficCubit(api: ClashApis())),
             ],
