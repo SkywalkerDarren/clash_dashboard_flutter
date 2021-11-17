@@ -17,8 +17,10 @@ class HomeScreen extends StatelessWidget {
           Column(
             children: [
               Text('clash dashboard'),
-              BlocBuilder<TrafficCubit, TrafficState>(builder: (context, state) {
-                return Text('up: ${state.upload / 1000}kb/s down: ${state.download / 1000}kb/s');
+              BlocBuilder<TrafficCubit, TrafficState>(
+                  builder: (context, state) {
+                return Text(
+                    'up: ${state.upload / 1000}kb/s down: ${state.download / 1000}kb/s');
               }),
               MenuItem(title: "proxies", onTap: () {}),
               MenuItem(title: "rules", onTap: () {}),
@@ -26,7 +28,8 @@ class HomeScreen extends StatelessWidget {
               MenuItem(title: "logs", onTap: () {}),
               MenuItem(title: "settings", onTap: () {}),
               const Spacer(),
-              BlocBuilder<VersionCubit, VersionState>(builder: (context, state) {
+              BlocBuilder<VersionCubit, VersionState>(
+                  builder: (context, state) {
                 return Text('version: ${state.version}');
               }),
             ],

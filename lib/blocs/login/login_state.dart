@@ -6,7 +6,9 @@ abstract class LoginState extends Equatable {
 
 class LoginInitial extends LoginState {
   final bool enableConnect;
+
   const LoginInitial(this.enableConnect);
+
   @override
   List<Object> get props => [enableConnect];
 }

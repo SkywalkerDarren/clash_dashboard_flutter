@@ -1,4 +1,3 @@
-
 import 'package:bloc/bloc.dart';
 import 'package:clash_dashboard_flutter/repository/clash_apis.dart';
 import 'package:clash_dashboard_flutter/repository/client.dart';
@@ -9,6 +8,7 @@ part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final ClashApis api;
+
   LoginBloc({required this.api}) : super(const LoginInitial(false)) {
     String url = 'http://127.0.0.1';
     String port = '9090';

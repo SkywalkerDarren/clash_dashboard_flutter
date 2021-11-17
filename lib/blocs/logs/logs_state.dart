@@ -8,6 +8,4 @@ class LogsState {
   const LogsState(this.level, this.msg);
 }
 
-enum Level {
-  debug, info, warn, error
-}
+enum Level { debug, info, warn, error }

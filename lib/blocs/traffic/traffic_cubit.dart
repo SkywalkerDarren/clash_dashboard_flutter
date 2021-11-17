@@ -10,6 +10,7 @@ class TrafficCubit extends Cubit<TrafficState> {
   final List<int> uploadHistory = List.filled(300, 0, growable: true);
   final ClashApis api;
   StreamSubscription? _subscription;
+
   TrafficCubit({required this.api}) : super(const TrafficState(0, 0)) {
     _subscription = api.getTraffic().listen((event) {
       downloadHistory.add(event.down);

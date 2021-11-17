@@ -6,6 +6,7 @@ part 'version_state.dart';
 
 class VersionCubit extends Cubit<VersionState> {
   final ClashApis api;
+
   VersionCubit({required this.api}) : super(const VersionState('')) {
     api.getVersion().then((value) {
       emit(VersionState(value.version));

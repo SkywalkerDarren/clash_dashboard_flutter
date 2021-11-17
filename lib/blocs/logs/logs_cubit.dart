@@ -10,6 +10,7 @@ class LogsCubit extends Cubit<LogsState> {
   final ClashApis api;
   StreamSubscription? _subscription;
   final List<LogsState> history = [];
+
   LogsCubit(this.api) : super(const LogsState(Level.debug, '')) {
     api.getConfigs().then((resp) {
       _subscription = api.getLogs(resp.logLevel!).listen((event) {
