@@ -20,7 +20,7 @@ class MyRouterDelegate extends RouterDelegate<List<RouteSettings>>
   Widget build(BuildContext context) {
     return Navigator(
       key: navigatorKey,
-      pages: _pages,
+      pages: List.of(_pages),
       onPopPage: (route, result) {
         if(_pages.isNotEmpty) {
           _pages.removeLast();
@@ -39,6 +39,12 @@ class MyRouterDelegate extends RouterDelegate<List<RouteSettings>>
 
   @override
   Future<void> setNewRoutePath(List<RouteSettings> configuration) async {}
+
+  void loginToHomePage() {
+    _pages.clear();
+    _pages.add(HomePage());
+    notifyListeners();
+  }
 }
 
 class MyRouteInformationParser extends RouteInformationParser<List<RouteSettings>> {
